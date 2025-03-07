@@ -179,63 +179,75 @@ class EmployeeSystem:
         Frame3.place(x=750, y=390, width=520, height=310)
 
         # ----------Calculater Frame-------------
+        self.var_text = StringVar()
+        self.var_operator = ""
+        def btn_num_click(num):
+            self.var_operator = self.var_operator + str(num)
+            self.var_text.set(self.var_operator)
+            print(num)
+
+        def calculate_result():
+            res = str(eval(self.var_operator))
+            self.var_text.set(res)
+            self.var_operator = ''
+
         cal_Frame = Frame(Frame3, bg="white", bd=2, relief=RIDGE)
         cal_Frame.place(x=5, y=5, width=270, height=290)
 
-        txt_result = Entry(cal_Frame, font=("times new roman", 20, "normal"), bg="lightgray", fg="black")
+        txt_result = Entry(cal_Frame, font=("times new roman", 20, "normal"), bg="lightgray", fg="black", textvariable=self.var_text, justify=RIGHT)
         txt_result.place(x=4, y=5, width=260, height=50)
 
         # ----------Row1---------
-        btn_7 = Button(cal_Frame, text="7", font=("times new roman", 15, "normal"), bg="lightgray", fg="black")
+        btn_7 = Button(cal_Frame, text="7", font=("times new roman", 15, "normal"), bg="lightgray", fg="black", command=lambda : btn_num_click(7))
         btn_7.place(x=5, y=62, width=60, height=50)
 
-        btn_8 = Button(cal_Frame, text="8", font=("times new roman", 15, "normal"), bg="lightgray", fg="black")
+        btn_8 = Button(cal_Frame, text="8", font=("times new roman", 15, "normal"), bg="lightgray", fg="black", command=lambda : btn_num_click(8))
         btn_8.place(x=70, y=62, width=60, height=50)
 
-        btn_9 = Button(cal_Frame, text="9", font=("times new roman", 15, "normal"), bg="lightgray", fg="black")
+        btn_9 = Button(cal_Frame, text="9", font=("times new roman", 15, "normal"), bg="lightgray", fg="black", command=lambda : btn_num_click(9))
         btn_9.place(x=135, y=62, width=60, height=50)
 
-        btn_divide = Button(cal_Frame, text="/", font=("times new roman", 15, "normal"), bg="lightgray", fg="black")
+        btn_divide = Button(cal_Frame, text="/", font=("times new roman", 15, "normal"), bg="lightgray", fg="black", command=lambda : btn_num_click('/'))
         btn_divide.place(x=200, y=62, width=60, height=50)
 
         # ----------Row2---------
-        btn_4 = Button(cal_Frame, text="4", font=("times new roman", 15, "normal"), bg="lightgray", fg="black")
+        btn_4 = Button(cal_Frame, text="4", font=("times new roman", 15, "normal"), bg="lightgray", fg="black", command=lambda : btn_num_click(4))
         btn_4.place(x=5, y=116, width=60, height=50)
 
-        btn_5 = Button(cal_Frame, text="5", font=("times new roman", 15, "normal"), bg="lightgray", fg="black")
+        btn_5 = Button(cal_Frame, text="5", font=("times new roman", 15, "normal"), bg="lightgray", fg="black", command=lambda : btn_num_click(5))
         btn_5.place(x=70, y=116, width=60, height=50)
 
-        btn_6 = Button(cal_Frame, text="6", font=("times new roman", 15, "normal"), bg="lightgray", fg="black")
+        btn_6 = Button(cal_Frame, text="6", font=("times new roman", 15, "normal"), bg="lightgray", fg="black", command=lambda : btn_num_click(6))
         btn_6.place(x=135, y=116, width=60, height=50)
 
-        btn_multiply = Button(cal_Frame, text="*", font=("times new roman", 15, "normal"), bg="lightgray", fg="black")
+        btn_multiply = Button(cal_Frame, text="*", font=("times new roman", 15, "normal"), bg="lightgray", fg="black", command=lambda : btn_num_click('*'))
         btn_multiply.place(x=200, y=116, width=60, height=50)
 
-        # ----------Row1---------
-        btn_1 = Button(cal_Frame, text="1", font=("times new roman", 15, "normal"), bg="lightgray", fg="black")
+        # ----------Row3---------
+        btn_1 = Button(cal_Frame, text="1", font=("times new roman", 15, "normal"), bg="lightgray", fg="black", command=lambda : btn_num_click(1))
         btn_1.place(x=5, y=170, width=60, height=50)
 
-        btn_2 = Button(cal_Frame, text="2", font=("times new roman", 15, "normal"), bg="lightgray", fg="black")
+        btn_2 = Button(cal_Frame, text="2", font=("times new roman", 15, "normal"), bg="lightgray", fg="black", command=lambda : btn_num_click(2))
         btn_2.place(x=70, y=170, width=60, height=50)
 
-        btn_3 = Button(cal_Frame, text="3", font=("times new roman", 15, "normal"), bg="lightgray", fg="black")
+        btn_3 = Button(cal_Frame, text="3", font=("times new roman", 15, "normal"), bg="lightgray", fg="black", command=lambda : btn_num_click(3))
         btn_3.place(x=135, y=170, width=60, height=50)
 
-        btn_add = Button(cal_Frame, text="-", font=("times new roman", 15, "normal"), bg="lightgray", fg="black")
-        btn_add.place(x=200, y=170, width=60, height=50)
+        btn_subtract = Button(cal_Frame, text="-", font=("times new roman", 15, "normal"), bg="lightgray", fg="black", command=lambda : btn_num_click('-'))
+        btn_subtract.place(x=200, y=170, width=60, height=50)
 
-        # ----------Row1---------
-        btn_1 = Button(cal_Frame, text="0", font=("times new roman", 15, "normal"), bg="lightgray", fg="black")
-        btn_1.place(x=5, y=225, width=60, height=50)
+        # ----------Row4---------
+        btn_0 = Button(cal_Frame, text="0", font=("times new roman", 15, "normal"), bg="lightgray", fg="black", command=lambda : btn_num_click(0))
+        btn_0.place(x=5, y=225, width=60, height=50)
 
-        btn_2 = Button(cal_Frame, text=".", font=("times new roman", 15, "normal"), bg="lightgray", fg="black")
-        btn_2.place(x=70, y=225, width=60, height=50)
+        btn_dot = Button(cal_Frame, text=".", font=("times new roman", 15, "normal"), bg="lightgray", fg="black", command=lambda : btn_num_click("."))
+        btn_dot.place(x=70, y=225, width=60, height=50)
 
-        btn_3 = Button(cal_Frame, text="+", font=("times new roman", 15, "normal"), bg="lightgray", fg="black")
-        btn_3.place(x=135, y=225, width=60, height=50)
+        btn_add = Button(cal_Frame, text="+", font=("times new roman", 15, "normal"), bg="lightgray", fg="black", command=lambda : btn_num_click("+"))
+        btn_add.place(x=135, y=225, width=60, height=50)
 
-        btn_4 = Button(cal_Frame, text="=", font=("times new roman", 15, "normal"), bg="lightgray", fg="black")
-        btn_4.place(x=200, y=225, width=60, height=50)
+        btn_equal = Button(cal_Frame, text="=", font=("times new roman", 15, "normal"), bg="lightgray", fg="black", command=calculate_result )
+        btn_equal.place(x=200, y=225, width=60, height=50)
 
         # ----------Salary Receipt Frame-------------
         salary_receipt_Frame = Frame(Frame3, bg="white", bd=2, relief=RIDGE)
